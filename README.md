@@ -3,7 +3,7 @@
 ---
 
 ## **Description**
-Ce projet est une application mobile éducative développée avec React Native. Elle propose un jeu où l'utilisateur doit résoudre des équations mathématiques dans un temps limité. Les modes de difficulté et le système de vies permettent d'ajuster le challenge.
+Ce projet est une application mobile éducative développée avec React Native. Elle propose un jeu où l'utilisateur doit résoudre des additions mathématiques dans un temps limité. Les modes de difficulté et le système de vies permettent d'ajuster le challenge.
 
 ---
 
@@ -11,7 +11,7 @@ Ce projet est une application mobile éducative développée avec React Native. 
 Les consignes à respecter pour ce projet :
 
 - Créer une application mobile en **React Native** avec les fonctionnalités suivantes :
-  - Générer des équations mathématiques aléatoires.
+  - Générer des additions mathématiques aléatoires.
   - Permettre à l'utilisateur de répondre à une question dans un délai imparti.
   - Ajouter un mode facile et un mode difficile.
   - Implémenter un système de vies et de score.
