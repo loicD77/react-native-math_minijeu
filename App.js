@@ -25,16 +25,17 @@ export default function App() { // Le composant est accessible ailleurs avec "ex
   const [solution, setSolution] = useState(0); // Stocke la bonne réponse du calcul en cours. Il est initialisé à 0 mais mis à jour dès que numberOne, numberTwo , numberThree difficulty ou operation changent
   const [userAnswer, setUserAnswer] = useState('');// userAnswer stocke la réponse entrée par l'utilisateur. Il est initialisé à une chaîne vide car l'utilisateur n'a rien tapé au départ
   const [msg, setMsg] = useState('');  // Permet avec msg qui est une chaîne de texte d'afficher des messages (Félicitation, Explication si réponse fausse, Indications de fin du jeu..)
-  const [operation, setOperation] = useState('addition'); // Opération choisie par défaut
+  const [operation, setOperation] = useState('addition'); // Opération stocke le type d'opération à effectuer (addition, soustraction, multiplication, division). Il est initialisé avec 'addition', donc par défaut, le jeu commence avec des additions.
 
-  const [timeLeft, setTimeLeft] = useState(EASY_TIME);
-  const [btnEnabled, setBtnEnabled] = useState(true);
-  const [lives, setLives] = useState(MAX_LIVES);
-  const [score, setScore] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(EASY_TIME); // Gère le temps restant avant la fin de la question . // Initialisé avec EASY_TIME (10 secondes pour le mode facile)
+  const [btnEnabled, setBtnEnabled] = useState(true); //contrôle l'activation/désactivation du bouton "Soumettre" . true = bouton actif, false = bouton désactivé (ex: après Game Over)
+  const [lives, setLives] = useState(MAX_LIVES); // Gère le nombre de vies restantes. Initialisé avec MAX_LIVES (3 vies)
+  const [score, setScore] = useState(0); // Stocke le score du joueur, commence à 0 et s'incrémente.  Augmente selon la difficulté : EASY_POINTS (5 points) ou HARD_POINTS (10 points)
 
-  const [difficulty, setDifficulty] = useState('easy');
-  const [gameOver, setGameOver] = useState(false);
-  const [canChangeDifficulty, setCanChangeDifficulty] = useState(true);
+  const [difficulty, setDifficulty] = useState('easy'); // Concerne la difficulté actuelle du jeu.  Par défaut, il est en "easy" (facile), l'utilisateur peut passer en "hard"
+  const [gameOver, setGameOver] = useState(false); // Indique si le jeu est terminé ou non . false = le jeu continue, true = l'utilisateur a perdu toutes ses vies
+  const [canChangeDifficulty, setCanChangeDifficulty] = useState(true); // Permet ou interdit le changement de difficulté , true = l'utilisateur peut changer la difficulté, false = il ne peut plus la modifier
+  // Il passe à false après la première réponse pour éviter la triche
 
   const timerRef = useRef(null);
 
@@ -46,13 +47,13 @@ export default function App() { // Le composant est accessible ailleurs avec "ex
         result = numberOne + numberTwo + (numberThree || 0); // Le résultat vaut l'addition de numberOne, numberTwo et de numberThree (ou zéro)
       } else if (operation === 'subtraction') { // Si l'opération est soustraction, "=== : même valeur et même type"
         result = numberOne - numberTwo - (numberThree || 0); // Le résultat vaut la soustraction de numberOne, numberTwo et de numberThree (ou zéro)
-      } else if (operation === 'multiplication') {   // 
-        result = numberOne * numberTwo * (numberThree || 1);
+      } else if (operation === 'multiplication') {   // Si l'opération est multiplication
+        result = numberOne * numberTwo * (numberThree || 1); // Le résultat correspond ici à la multiplication de numberOne, numberTwo et de numberThree (ou 1, 1 car 0 annule la multiplication)
       } else if (operation === 'division') {
         result = (numberThree !== 0) ? numberOne / numberTwo / numberThree : 1;
       }
-    } else {
-      if (operation === 'addition') {
+    } else { // Sinon en "facile"
+      if (operation === 'addition') { 
         result = numberOne + numberTwo;
       } else if (operation === 'subtraction') {
         result = numberOne - numberTwo;
@@ -446,5 +447,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     borderRadius: 5,
   },
+});
+
 });
 
