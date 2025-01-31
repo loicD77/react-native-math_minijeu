@@ -37,7 +37,7 @@ export default function App() { // Le composant est accessible ailleurs avec "ex
   const [canChangeDifficulty, setCanChangeDifficulty] = useState(true); // Permet ou interdit le changement de difficulté , true = l'utilisateur peut changer la difficulté, false = il ne peut plus la modifier
   // Il passe à false après la première réponse pour éviter la triche
 
-  const timerRef = useRef(null);
+  const timerRef = useRef(null);  // Référence pour stocker l'identifiant du compte à rebours
 
   // useEffect pour mettre à jour la solution en fonction de la difficulté, des nombres, et de l'opération
   useEffect(() => {
@@ -52,23 +52,23 @@ export default function App() { // Le composant est accessible ailleurs avec "ex
       } else if (operation === 'division') {
         result = (numberThree !== 0) ? numberOne / numberTwo / numberThree : 1;
       }
-    } else { // Sinon en "facile"
-      if (operation === 'addition') { 
-        result = numberOne + numberTwo;
-      } else if (operation === 'subtraction') {
-        result = numberOne - numberTwo;
-      } else if (operation === 'multiplication') {
-        result = numberOne * numberTwo;
-      } else if (operation === 'division') {
-        result = (numberTwo !== 0) ? numberOne / numberTwo : 1;
+    } else { // Sinon en "facile" 
+      if (operation === 'addition') { // Si l'opération est addition, "=== : même valeur et même type"        "
+        result = numberOne + numberTwo; // Résultat "result" qui correspond au résultat de l'addition de numberOne et numberTwo
+      } else if (operation === 'subtraction') {  // Sinon si l'opération est subtraction, "=== : même valeur et même type"
+        result = numberOne - numberTwo;  // Résultat "result" qui correspond au résultat de la soustraction de numberOne et numberTwo
+      } else if (operation === 'multiplication') { // Sinon si l'opération est multiplication, "=== : même valeur et même type"
+        result = numberOne * numberTwo; // Résultat "result" qui correspond au résultat de la multiplication de numberOne et numberTwo
+      } else if (operation === 'division') { // Sinon si l'opération est division, "=== : même valeur et même type"
+        result = (numberTwo !== 0) ? numberOne / numberTwo : 1; // Résultat "result" qui correspond au résultat de la division de numberOne par numberTwo
       }
     }
-    setSolution(result);
-  }, [numberOne, numberTwo, numberThree, difficulty, operation]);
+    setSolution(result); // Met à jour l’état solution avec la nouvelle valeur result (le résultat du calcul mathématique).
+  }, [numberOne, numberTwo, numberThree, difficulty, operation]);// Si numberOne, numberTwo, numberThree, difficulty ou operation change, alors le code se ré-exécute et recalcule la solution.
 
   // useEffect pour gérer le timeout et la perte de vie
   useEffect(() => {
-    if (timeLeft === 0) {
+    if (timeLeft === 0) { // Si le temps restant est égal à 0
       handleTimeOut(); // Gérer la perte de vie quand le temps est écoulé
     }
   }, [timeLeft]); // Ce useEffect sera appelé chaque fois que timeLeft change
@@ -449,5 +449,4 @@ const styles = StyleSheet.create({
   },
 });
 
-});
 
