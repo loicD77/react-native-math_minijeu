@@ -94,7 +94,7 @@ Suggestions pour améliorer ou étendre le projet :
 ---
 
 ## **Crédits**
-- Développé par **[Votre Nom]**.
+- Développé par **DARRAS Loïc**.
 - Inspiration tirée de projets éducatifs similaires.
 
 ---
@@ -102,7 +102,7 @@ Suggestions pour améliorer ou étendre le projet :
 ## **Contact**
 Pour toute question concernant le projet, vous pouvez me contacter via :
 
-- **Email** : votre.email@exemple.com
-- **GitHub** : [votre-utilisateur](https://github.com/votre-utilisateur)
+- **Email** : darras77.loic@gmail.com
+- **GitHub** : [loicD77](https://github.com/loicD77)
 
 ---
